@@ -5,10 +5,16 @@
  */
 package Interfaces;
 
+import Clases.Tipo_Producto;
+import java.util.List;
+
 /**
  *
  * @author juang
  */
 public interface IDaoTipo_Producto {
-    
+    public List<Tipo_Producto> Listar() throws Exception;
+    public boolean Modificar(Tipo_Producto TipoProd) throws Exception;
+    public boolean Eliminar(Tipo_Producto TipoProd) throws Exception;
+    public boolean Registrar(Tipo_Producto TipoProd) throws Exception;
 }
