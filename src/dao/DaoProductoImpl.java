@@ -50,7 +50,7 @@ public class DaoProductoImpl extends Conexion implements IDaoProductos {
     }
 
     @Override
-    public boolean Update(Producto Producto) throws Exception {
+    public boolean Modificar(Producto Producto) throws Exception {
         boolean respuesta = false;
         String Query="";
         try{

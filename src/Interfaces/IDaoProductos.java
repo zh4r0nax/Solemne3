@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface IDaoProductos {
     public List<Producto> Listar() throws Exception;
-    public boolean Update(Producto Producto) throws Exception;
+    public boolean Modificar(Producto Producto) throws Exception;
     public boolean Eliminar(Producto Producto) throws Exception;
     public boolean Registrar(Producto Producto) throws Exception;
 }

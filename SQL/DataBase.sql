@@ -21,11 +21,12 @@ create table PRODUCTOS(
 
 create table CAJA(
 	DBID_CAJA INT(11) unsigned auto_increment primary key,
+	CODIGO_CAJA VARCHAR(100),
 	FLUJO_INICIAL INT(11),
 	FLUJO_INGRESO INT(11),
 	FLUJO_SALIDA INT(11)
+	
 );
-
 
 create table VENTA(
 	DBID_VENTA INT(11) unsigned auto_increment primary key,

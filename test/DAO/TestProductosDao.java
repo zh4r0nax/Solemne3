@@ -1,3 +1,5 @@
+package DAO;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -45,7 +47,7 @@ public class TestProductosDao {
         Producto pro = new Producto("ProcutoTest1Update",1,10,50,1000,1190);
         pro.setDBID_Producto(2);
         
-        assertTrue(Daopro.Update(pro));
+        assertTrue(Daopro.Modificar(pro));
     }
     */
     

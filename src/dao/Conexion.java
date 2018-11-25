@@ -31,7 +31,7 @@ public class Conexion {
         try{
             Class.forName(driver);
             conextion = DriverManager.getConnection(DB_Host,DB_User,DB_Pass);
-            System.out.println("Conexión exitosa");
+            //System.out.println("Conexión exitosa");
         }catch(Exception ex){
             throw ex;
         }

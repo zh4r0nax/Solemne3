@@ -13,8 +13,8 @@ import java.util.List;
  * @author juang
  */
 public interface IDaoCaja {
-    public void Registrar(Caja Caja) throws Exception;
-    public void Modificar(Caja Caja) throws Exception;
-    public void Eliminar(Caja Caja) throws Exception;
+    public boolean Registrar(Caja Caja) throws Exception;
+    public boolean Modificar(Caja Caja) throws Exception;
+    public boolean Eliminar(Caja Caja) throws Exception;
     public List<Caja> Listar() throws Exception;
 }

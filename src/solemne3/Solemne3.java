@@ -19,17 +19,7 @@ public class Solemne3 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Persona per = new Persona();
-        per.setNombre("ejemplo2");
         
-        try{
-            DaoPersona dao = new DaoPersonaImpl();
-            dao.Registrar(per);
-            
-            
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-        }
     }
     
 }
