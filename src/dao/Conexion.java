@@ -15,8 +15,9 @@ import java.sql.SQLException;
  */
 public class Conexion {
     protected Connection conextion;
-    private static final String driver = "com.mysql.jdbc.Driver";
-    private static final String DB_Host = "jdbc:mysql://localhost:3308/solemne2java?verifyServerCertificate=false&useSSL=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    //private static final String driver = "com.mysql.jdbc.Driver";
+    private static final String driver = "com.mysql.cj.jdbc.Driver";
+    private static final String DB_Host = "jdbc:mysql://localhost:3308/solemne3?verifyServerCertificate=false&useSSL=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     private static final String DB_User = "poo";
     private static final String DB_Pass = "poo2018";
     
