@@ -15,6 +15,7 @@ public class Venta {
     private int ID_CAJA;
     private int CANTIDAD;
     private int PRECIO_FINAL;
+    private String NombreProducto;
 
     public Venta() {
     }
@@ -26,6 +27,15 @@ public class Venta {
         this.PRECIO_FINAL = PRECIO_FINAL;
     }
 
+    public String getNombreProducto() {
+        return NombreProducto;
+    }
+
+    public void setNombreProducto(String NombreProducto) {
+        this.NombreProducto = NombreProducto;
+    }
+
+    
     public int getDBID_VENTA() {
         return DBID_VENTA;
     }
