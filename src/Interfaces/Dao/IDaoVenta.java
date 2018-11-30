@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interfaces;
+package Interfaces.Dao;
 
 import Clases.Venta;
 import java.util.List;

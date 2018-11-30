@@ -6,7 +6,7 @@
 package dao;
 
 import Clases.Venta;
-import Interfaces.IDaoVenta;
+import Interfaces.Dao.IDaoVenta;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;

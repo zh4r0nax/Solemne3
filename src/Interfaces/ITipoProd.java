@@ -5,14 +5,10 @@
  */
 package Interfaces;
 
-import Clases.Producto;
-
 /**
  *
  * @author juang
  */
-public interface IProducto {
-    
-    public void validacionExistencia(Producto Producto);
-    
+public interface ITipoProd {
+   
 }

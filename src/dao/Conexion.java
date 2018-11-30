@@ -22,7 +22,6 @@ public class Conexion {
     private static final String DB_Pass = "poo2018";
     
     //ambiente Universidad
-    
     //private static final String DB_Host = "jdbc:mysql://localhost/solemne2java";
     //private static final String DB_User = "root";
     //private static final String DB_Pass = "";

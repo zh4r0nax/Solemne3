@@ -5,7 +5,7 @@
  */
 package DAO;
 
-import Interfaces.IDaoCaja;
+import Interfaces.Dao.IDaoCaja;
 import Clases.Caja;
 import dao.DaoCajaImpl;
 import java.util.List;

@@ -6,7 +6,7 @@
 package DAO;
 
 import Clases.Venta;
-import Interfaces.IDaoVenta;
+import Interfaces.Dao.IDaoVenta;
 import dao.DaoVentaImpl;
 import java.util.List;
 

@@ -6,7 +6,7 @@
 package Vistas;
 
 import Clases.Tipo_Producto;
-import Interfaces.IDaoTipo_Producto;
+import Interfaces.Dao.IDaoTipo_Producto;
 import dao.DaoTipoProductoImpl;
 import java.util.logging.Level;
 import java.util.logging.Logger;

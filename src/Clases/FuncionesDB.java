@@ -5,8 +5,8 @@
  */
 package Clases;
 
-import Interfaces.IDaoProductos;
-import Interfaces.IDaoVenta;
+import Interfaces.Dao.IDaoProductos;
+import Interfaces.Dao.IDaoVenta;
 
 import dao.DaoProductoImpl;
 import dao.DaoVentaImpl;

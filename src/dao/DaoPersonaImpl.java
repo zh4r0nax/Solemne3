@@ -6,7 +6,7 @@
 package dao;
 
 import ClasesSinImportancia.Persona;
-import Interfaces.DaoPersona;
+import Interfaces.Dao.DaoPersona;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;

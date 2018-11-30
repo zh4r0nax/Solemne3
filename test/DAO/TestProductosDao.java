@@ -7,7 +7,7 @@ package DAO;
  */
 
 import Clases.Producto;
-import Interfaces.IDaoProductos;
+import Interfaces.Dao.IDaoProductos;
 import dao.DaoProductoImpl;
 import java.util.List;
 
