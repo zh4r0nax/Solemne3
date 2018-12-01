@@ -265,7 +265,6 @@ public class Principal extends javax.swing.JFrame {
                 venta.setID_PRODUCTO(jTable1.getValueAt(i, 0).toString());
                 venta.setCANTIDAD( Integer.parseInt(jTable1.getValueAt(i, 1).toString()));
                 venta.setPRECIO_FINAL(Integer.parseInt( jTable1.getValueAt(i, 2).toString()));
-
                 dv.Registrar(venta);
             }
         }catch(Exception e){
