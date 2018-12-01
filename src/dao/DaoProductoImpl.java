@@ -31,7 +31,7 @@ public class DaoProductoImpl extends Conexion implements IDaoProductos {
                 Producto per = new Producto();
                 per.setDBID_Producto(rs.getInt("DBID_PRODUCTO"));
                 per.setNombre(rs.getString("NOMBRE"));
-                per.setID_Tipo(rs.getInt("ID_TIPO"));
+                per.setID_Tipo(rs.getString("ID_TIPO"));
                 per.setCantidad(rs.getInt("CANTIDAD"));
                 per.setCantidadMinima(rs.getInt("CANTIDAD_MINIMA"));
                 per.setPrecioBruto(rs.getInt("PRECIO_BRUTO"));
@@ -64,7 +64,7 @@ public class DaoProductoImpl extends Conexion implements IDaoProductos {
                     + "PRECIO_NETO = ? "
                     + "WHERE DBID_PRODUCTO = ?");
             st.setString(1, Producto.getNombre());
-            st.setInt(2, Producto.getID_Tipo());
+            st.setString(2, Producto.getID_Tipo());
             st.setInt(3, Producto.getCantidad());
             st.setInt(4, Producto.getCantidadMinima());
             st.setInt(5, Producto.getPrecioBruto());
@@ -119,7 +119,7 @@ public class DaoProductoImpl extends Conexion implements IDaoProductos {
 
             PreparedStatement st = this.conextion.prepareStatement(Query);
             st.setString(1, Producto.getNombre());
-            st.setInt(2, Producto.getID_Tipo());
+            st.setString(2, Producto.getID_Tipo());
             st.setInt(3, Producto.getCantidad());
             st.setInt(4, Producto.getCantidadMinima());
             st.setInt(5, Producto.getPrecioBruto());

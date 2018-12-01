@@ -12,7 +12,7 @@ package Clases;
 public class Producto {
     private int DBID_Producto;
     private String Nombre;
-    private int ID_Tipo;
+    private String ID_Tipo;
     private int Cantidad;
     private int CantidadMinima;
     private int PrecioBruto;
@@ -23,7 +23,7 @@ public class Producto {
 
     
     
-    public Producto(String Nombre, int ID_Tipo, int Cantidad, int CantidadMinima, int PrecioBruto, int PrecioNeto) {
+    public Producto(String Nombre, String ID_Tipo, int Cantidad, int CantidadMinima, int PrecioBruto, int PrecioNeto) {
         this.Nombre = Nombre;
         this.ID_Tipo = ID_Tipo;
         this.Cantidad = Cantidad;
@@ -34,11 +34,11 @@ public class Producto {
 
     
     
-    public int getID_Tipo() {
+    public String getID_Tipo() {
         return ID_Tipo;
     }
 
-    public void setID_Tipo(int ID_Tipo) {
+    public void setID_Tipo(String ID_Tipo) {
         this.ID_Tipo = ID_Tipo;
     }
 

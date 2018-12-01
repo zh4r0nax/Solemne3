@@ -5,6 +5,12 @@
  */
 package Vistas;
 
+import Clases.*;
+import Interfaces.Dao.*;
+import dao.*;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author juang
@@ -17,7 +23,33 @@ public class Administrador extends javax.swing.JFrame {
     public Administrador() {
         initComponents();
         this.setLocationRelativeTo(this);
+        CargaTabla();
     }
+    
+    
+    private void CargaTabla(){
+         try{
+
+            IDaoProductos DaoPro = new DaoProductoImpl();
+            
+            DefaultTableModel modelo = new DefaultTableModel();
+            modelo.setColumnIdentifiers(new Object[]{"Nombre","Tipo","Cantidad","Cantidad Minima","Precio Bruto","Precio Neto"});
+            List<Producto> lstpro = DaoPro.Listar();
+            for(int i=0; i < lstpro.size(); i++){
+                Producto Pro = lstpro.get(i);
+                System.out.println(Pro);
+                int precio = 0;
+                modelo.addRow(new Object[]{Pro.getNombre(),Pro.getID_Tipo(),Pro.getCantidad(),Pro.getCantidadMinima(),Pro.getPrecioBruto(),Pro.getPrecioNeto()});
+
+            }
+            jTable1.setModel(modelo);
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -55,6 +87,11 @@ public class Administrador extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("Agregar Producto");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Eliminar Producto");
 
@@ -128,10 +165,16 @@ public class Administrador extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        AgregarTipoProd TP = new AgregarTipoProd();
+        MantCat TP = new MantCat();
         this.hide();
         TP.show();
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        MantProd mp = new MantProd();
+        this.hide();
+        mp.show();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

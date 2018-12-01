@@ -30,8 +30,8 @@ public class DaoVentaImpl  extends Conexion implements IDaoVenta{
             while(rs.next()){
                 Venta Venta = new Venta();
                 Venta.setDBID_VENTA(rs.getInt("DBID_VENTA"));
-                Venta.setID_PRODUCTO(rs.getInt("ID_PRODUCTO"));
-                Venta.setID_CAJA(rs.getInt("ID_CAJA"));
+                Venta.setID_PRODUCTO(rs.getString("ID_PRODUCTO"));
+                Venta.setID_CAJA(rs.getString("ID_CAJA"));
                 Venta.setCANTIDAD(rs.getInt("CANTIDAD"));
                 Venta.setPRECIO_FINAL(rs.getInt("PRECIO_FINAL"));
                 lista.add(Venta);
@@ -59,8 +59,8 @@ public class DaoVentaImpl  extends Conexion implements IDaoVenta{
                     + "PRECIO_FINAL = ? "
                     
                     + " WHERE DBID_VENTA = ?");
-            st.setInt(1, Venta.getID_PRODUCTO());
-            st.setInt(2, Venta.getID_CAJA());
+            st.setString(1, Venta.getID_PRODUCTO());
+            st.setString(2, Venta.getID_CAJA());
             st.setInt(3, Venta.getCANTIDAD());
             st.setInt(4, Venta.getPRECIO_FINAL());
             st.setInt(5, Venta.getDBID_VENTA());
@@ -112,8 +112,8 @@ public class DaoVentaImpl  extends Conexion implements IDaoVenta{
                     ") VALUES(?,?,?,?);";
             
             PreparedStatement st = this.conextion.prepareStatement(Query);
-            st.setInt(1, Venta.getID_PRODUCTO());
-            st.setInt(2, Venta.getID_CAJA());
+            st.setString(1, Venta.getID_PRODUCTO());
+            st.setString(2, Venta.getID_CAJA());
             st.setInt(3, Venta.getCANTIDAD());
             st.setInt(4, Venta.getPRECIO_FINAL());
             st.execute();

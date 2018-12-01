@@ -5,6 +5,12 @@
  */
 package Vistas;
 
+import Clases.Venta;
+import Interfaces.Dao.IDaoVenta;
+import dao.DaoVentaImpl;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author juang
@@ -17,8 +23,32 @@ public class HistoricoVentas extends javax.swing.JFrame {
     public HistoricoVentas() {
         initComponents();
         this.setLocationRelativeTo(this);
+        CargaTabla();
     }
 
+    private void CargaTabla(){
+         try{
+
+            IDaoVenta DaoVent = new DaoVentaImpl();
+            
+            DefaultTableModel modelo = new DefaultTableModel();
+            modelo.setColumnIdentifiers(new Object[]{"producto","cantidad","Precio Final"});
+            List<Venta> lstvent = DaoVent.Listar();
+            for(int i=0; i < lstvent.size(); i++){
+                Venta vent = lstvent.get(i);
+                System.out.println(vent);
+                int precio = 0;
+                modelo.addRow(new Object[]{vent.getID_PRODUCTO(),vent.getCANTIDAD() ,vent.getPRECIO_FINAL()});
+
+            }
+            jTable1.setModel(modelo);
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

@@ -5,6 +5,15 @@
  */
 package Vistas;
 
+import Clases.Producto;
+import Clases.Venta;
+import Interfaces.Dao.IDaoProductos;
+import Interfaces.Dao.IDaoVenta;
+import dao.DaoProductoImpl;
+import dao.DaoVentaImpl;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author juang
@@ -14,16 +23,59 @@ public class Principal extends javax.swing.JFrame {
     /**
      * Creates new form Principal
      */
+    
+    
+    DefaultTableModel modelo = new DefaultTableModel();
+    
+    
     public Principal() {
         initComponents();
         this.setLocationRelativeTo(this);
+        modelo.setColumnIdentifiers(new Object[]{"producto","cantidad","Precio Final"});
+        CargarProd();
+        //CargaTabla();
     }
 
     
     private void CargaTabla(){
-        
+         try{
+
+            //IDaoVenta DaoVent = new DaoVentaImpl();
+            
+             //List<Venta> lstvent = DaoVent.Listar();
+            //for(int i=0; i <= lstvent.size(); i++){
+            //    Venta vent = lstvent.get(i);
+            //    System.out.println(vent);
+            int precio = 0;
+            modelo.addRow(new Object[]{jComboBox1.getSelectedItem().toString(),jTextField1.getText(),precio});
+                
+            //}
+            jTable1.setModel(modelo);
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
     }
     
+    private void CargarProd(){
+        try{
+
+            IDaoProductos Daopro = new DaoProductoImpl();
+
+             List<Producto> lstPro = Daopro.Listar();
+            for(int i=0; i <= lstPro.size(); i++){
+                Producto pro = lstPro.get(i);
+                System.out.println(pro);
+                jComboBox1.addItem(lstPro.get(i).getNombre());
+                
+            }
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+
+
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -81,10 +133,18 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jButton4.setText("Comprar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Agregar");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Producto:");
 
@@ -171,6 +231,46 @@ public class Principal extends javax.swing.JFrame {
         this.hide();
         HV.show();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // Agregar datos a ventas
+        try{
+            
+        
+        IDaoVenta dv = new DaoVentaImpl();
+        Venta vent =new Venta();
+        vent.setID_PRODUCTO(jComboBox1.getSelectedItem().toString());
+        vent.setCANTIDAD(Integer.parseInt(jTextField1.getText()));
+        dv.Registrar(vent);
+        CargaTabla();
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        //registrar tabla1 a tabla ventas
+        try{
+            
+        
+            jTable1.getSelectedRow();
+            IDaoVenta dv = new DaoVentaImpl();
+            for (int i = 0; i < jTable1.getRowCount(); i++) {
+                Venta venta = new Venta();
+                System.out.println("Registro número: "+i);
+                System.out.println("ID: "+jTable1.getValueAt(i, 0));
+                System.out.println("NOMBRE: "+jTable1.getValueAt(i, 1));
+                System.out.println("TELÉFONO: "+jTable1.getValueAt(i, 2));
+                venta.setID_PRODUCTO(jTable1.getValueAt(i, 0).toString());
+                venta.setCANTIDAD( Integer.parseInt(jTable1.getValueAt(i, 1).toString()));
+                venta.setPRECIO_FINAL(Integer.parseInt( jTable1.getValueAt(i, 2).toString()));
+
+                dv.Registrar(venta);
+            }
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

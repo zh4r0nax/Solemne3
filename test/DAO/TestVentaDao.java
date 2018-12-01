@@ -35,14 +35,14 @@ public class TestVentaDao {
     
     @Test
     public void Insert() throws Exception{
-        Venta venta = new Venta(1,1,18,5000);
+        Venta venta = new Venta("1","1",18,5000);
         assertTrue(DVenta.Registrar(venta));
         
     }
     
     @Test
     public void Update()throws Exception{
-        Venta venta = new Venta(1,1,19,6500);
+        Venta venta = new Venta("1","1",19,6500);
         venta.setDBID_VENTA(2);
         assertTrue(DVenta.Modificar(venta));
     }

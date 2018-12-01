@@ -33,9 +33,9 @@ public class FuncionesDB {
                 
                 for(int i=0; i<lstVenta.size();i++){
                     
-                    int id = lstVenta.get(i).getID_PRODUCTO();
+                    String id = lstVenta.get(i).getID_PRODUCTO();
                     for(int j=0; j<lstProd.size();j++){
-                        if(id == lstProd.get(j).getDBID_Producto()){
+                        if(Integer.parseInt(id) == lstProd.get(j).getDBID_Producto()){
                             lstVenta.get(i).setNombreProducto(lstProd.get(j).getNombre());
                         }
                     }

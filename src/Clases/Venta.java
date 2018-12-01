@@ -11,8 +11,8 @@ package Clases;
  */
 public class Venta {
     private int DBID_VENTA;
-    private int ID_PRODUCTO;
-    private int ID_CAJA;
+    private String ID_PRODUCTO;
+    private String ID_CAJA;
     private int CANTIDAD;
     private int PRECIO_FINAL;
     private String NombreProducto;
@@ -20,7 +20,7 @@ public class Venta {
     public Venta() {
     }
 
-    public Venta(int ID_PRODUCTO, int ID_CAJA, int CANTIDAD, int PRECIO_FINAL) {
+    public Venta(String ID_PRODUCTO, String ID_CAJA, int CANTIDAD, int PRECIO_FINAL) {
         this.ID_PRODUCTO = ID_PRODUCTO;
         this.ID_CAJA = ID_CAJA;
         this.CANTIDAD = CANTIDAD;
@@ -44,19 +44,19 @@ public class Venta {
         this.DBID_VENTA = DBID_VENTA;
     }
 
-    public int getID_PRODUCTO() {
+    public String getID_PRODUCTO() {
         return ID_PRODUCTO;
     }
 
-    public void setID_PRODUCTO(int ID_PRODUCTO) {
+    public void setID_PRODUCTO(String ID_PRODUCTO) {
         this.ID_PRODUCTO = ID_PRODUCTO;
     }
 
-    public int getID_CAJA() {
+    public String getID_CAJA() {
         return ID_CAJA;
     }
 
-    public void setID_CAJA(int ID_CAJA) {
+    public void setID_CAJA(String ID_CAJA) {
         this.ID_CAJA = ID_CAJA;
     }
 
