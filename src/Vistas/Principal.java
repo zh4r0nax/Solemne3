@@ -46,7 +46,7 @@ public class Principal extends javax.swing.JFrame {
             //for(int i=0; i <= lstvent.size(); i++){
             //    Venta vent = lstvent.get(i);
             //    System.out.println(vent);
-            int precio = 0;
+            int precio = Integer.parseInt(jTextField1.getText());
             modelo.addRow(new Object[]{jComboBox1.getSelectedItem().toString(),jTextField1.getText(),precio});
                 
             //}
@@ -241,7 +241,8 @@ public class Principal extends javax.swing.JFrame {
         Venta vent =new Venta();
         vent.setID_PRODUCTO(jComboBox1.getSelectedItem().toString());
         vent.setCANTIDAD(Integer.parseInt(jTextField1.getText()));
-        dv.Registrar(vent);
+        vent.setPRECIO_FINAL( Integer.parseInt(jTextField1.getText()));
+        //dv.Registrar(vent);
         CargaTabla();
         }catch(Exception e){
             System.out.println(e);

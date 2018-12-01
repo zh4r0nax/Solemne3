@@ -38,7 +38,6 @@ public class MantProd extends javax.swing.JFrame {
                 Tipo_Producto tp = lstTP.get(i);
                 System.out.println(tp);
                 jComboBox1.addItem(lstTP.get(i).getNombre());
-                
             }
         }
         catch(Exception e){
@@ -171,14 +170,12 @@ public class MantProd extends javax.swing.JFrame {
             
         
         IDaoProductos DP = new DaoProductoImpl();
-        
         Producto p = new Producto();
         p.setNombre(jTextField1.getText());
         p.setPrecioBruto(Integer.parseInt(jTextField2.getText()));
         p.setCantidadMinima(Integer.parseInt(jTextField3.getText()));
         p.setID_Tipo(jComboBox1.getSelectedItem().toString());
         //Polimorfismo a IVA
-        
         
         System.out.println(p);
         DP.Registrar(p);

@@ -173,11 +173,10 @@ public class MantCat extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
-        IDaoTipo_Producto DTP = new DaoTipoProductoImpl();
-        Tipo_Producto TP = new Tipo_Producto();
-        TP.setNombre(jTextField1.getText() );
-        TP.setIVA(Integer.parseInt( jTextField2.getText()));
-        
+            IDaoTipo_Producto DTP = new DaoTipoProductoImpl();
+            Tipo_Producto TP = new Tipo_Producto();
+            TP.setNombre(jTextField1.getText() );
+            TP.setIVA(Integer.parseInt( jTextField2.getText()));
             DTP.Registrar(TP);
             CargaTabla();
         } catch (Exception e) {

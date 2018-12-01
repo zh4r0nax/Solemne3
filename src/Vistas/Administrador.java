@@ -95,7 +95,12 @@ public class Administrador extends javax.swing.JFrame {
 
         jButton2.setText("Eliminar Producto");
 
-        jButton3.setText("Actualizar Producto");
+        jButton3.setText("Abastecer Producto");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Volver");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -132,7 +137,7 @@ public class Administrador extends javax.swing.JFrame {
                                 .addComponent(jButton3)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton5)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -175,6 +180,28 @@ public class Administrador extends javax.swing.JFrame {
         this.hide();
         mp.show();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // Actualizar Producto
+        try{
+            
+        
+        Producto p = new Producto();
+        int row = jTable1.getSelectedRow();
+        p.setNombre(String.valueOf(jTable1.getValueAt(row, 0)));
+        p.setID_Tipo(String.valueOf(jTable1.getValueAt(row, 1)));
+        p.setCantidad(Integer.parseInt(String.valueOf(jTable1.getValueAt(row, 2))));
+        p.setCantidadMinima(Integer.parseInt(String.valueOf(jTable1.getValueAt(row, 3))));
+        p.setPrecioBruto(Integer.parseInt(String.valueOf(jTable1.getValueAt(row, 4))));
+        p.setPrecioNeto(Integer.parseInt(String.valueOf(jTable1.getValueAt(row, 5))));
+            
+        Abastecer ab = new Abastecer(p);
+        this.hide();
+        ab.show();
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
