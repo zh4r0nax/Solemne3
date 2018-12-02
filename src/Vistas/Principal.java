@@ -11,7 +11,9 @@ import Interfaces.Dao.IDaoProductos;
 import Interfaces.Dao.IDaoVenta;
 import dao.DaoProductoImpl;
 import dao.DaoVentaImpl;
+import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -31,7 +33,7 @@ public class Principal extends javax.swing.JFrame {
     public Principal() {
         initComponents();
         this.setLocationRelativeTo(this);
-        modelo.setColumnIdentifiers(new Object[]{"producto","cantidad","Precio Final"});
+        modelo.setColumnIdentifiers(new Object[]{"id","producto","cantidad","Precio Final"});
         CargarProd();
         //CargaTabla();
     }
@@ -46,8 +48,18 @@ public class Principal extends javax.swing.JFrame {
             //for(int i=0; i <= lstvent.size(); i++){
             //    Venta vent = lstvent.get(i);
             //    System.out.println(vent);
-            int precio = Integer.parseInt(jTextField1.getText());
-            modelo.addRow(new Object[]{jComboBox1.getSelectedItem().toString(),jTextField1.getText(),precio});
+            
+            Producto p = new Producto();
+            p = (Producto) jComboBox1.getSelectedItem();
+            
+            int precio = Integer.parseInt(jTextField1.getText()) * p.getPrecioNeto();
+            
+            modelo.addRow(new Object[]{
+                p.getDBID_Producto()
+                ,p.getNombre()
+                ,jTextField1.getText()
+                ,precio
+            });
                 
             //}
             jTable1.setModel(modelo);
@@ -66,7 +78,8 @@ public class Principal extends javax.swing.JFrame {
             for(int i=0; i <= lstPro.size(); i++){
                 Producto pro = lstPro.get(i);
                 System.out.println(pro);
-                jComboBox1.addItem(lstPro.get(i).getNombre());
+                //jComboBox1.addItem(lstPro.get(i).getNombre());
+                jComboBox1.addItem(pro);
                 
             }
         }
@@ -87,13 +100,13 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton3 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jButtonHistorico = new javax.swing.JButton();
+        jButtonAdmin = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        jButtonComprar = new javax.swing.JButton();
+        jButtonAgregar = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -103,17 +116,17 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Historial deventa");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonHistorico.setText("Historial deventa");
+        jButtonHistorico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonHistoricoActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Administrador");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAdmin.setText("Administrador");
+        jButtonAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonAdminActionPerformed(evt);
             }
         });
 
@@ -132,17 +145,17 @@ public class Principal extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jButton4.setText("Comprar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jButtonComprar.setText("Comprar");
+        jButtonComprar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jButtonComprarActionPerformed(evt);
             }
         });
 
-        jButton5.setText("Agregar");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAgregar.setText("Agregar");
+        jButtonAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jButtonAgregarActionPerformed(evt);
             }
         });
 
@@ -160,9 +173,9 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
+                                .addComponent(jButtonHistorico)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton2))
+                                .addComponent(jButtonAdmin))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -175,8 +188,8 @@ public class Principal extends javax.swing.JFrame {
                                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton5)
-                                    .addComponent(jButton4))
+                                    .addComponent(jButtonAgregar)
+                                    .addComponent(jButtonComprar))
                                 .addGap(22, 22, 22))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(71, 71, 71)
@@ -193,8 +206,8 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jButtonHistorico)
+                    .addComponent(jButtonAdmin))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -206,9 +219,9 @@ public class Principal extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton5)
+                        .addComponent(jButtonAgregar)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton4)))
+                        .addComponent(jButtonComprar)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -217,60 +230,79 @@ public class Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdminActionPerformed
         
         Administrador ad = new Administrador();
         this.dispose();
         ad.show();
         this.hide();
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButtonAdminActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHistoricoActionPerformed
         HistoricoVentas HV = new HistoricoVentas();
         this.hide();
         HV.show();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonHistoricoActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void jButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarActionPerformed
         // Agregar datos a ventas
         try{
             
-        
-        IDaoVenta dv = new DaoVentaImpl();
-        Venta vent =new Venta();
-        vent.setID_PRODUCTO(jComboBox1.getSelectedItem().toString());
-        vent.setCANTIDAD(Integer.parseInt(jTextField1.getText()));
-        vent.setPRECIO_FINAL( Integer.parseInt(jTextField1.getText()));
-        //dv.Registrar(vent);
-        CargaTabla();
+            
+            
+            CargaTabla();
         }catch(Exception e){
             System.out.println(e);
         }
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_jButtonAgregarActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jButtonComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonComprarActionPerformed
         //registrar tabla1 a tabla ventas
         try{
             
         
             jTable1.getSelectedRow();
             IDaoVenta dv = new DaoVentaImpl();
+            IDaoProductos dp = new DaoProductoImpl();
+            List<Producto> lstP = new ArrayList();
+            lstP = dp.Listar();
             for (int i = 0; i < jTable1.getRowCount(); i++) {
                 Venta venta = new Venta();
+                Producto Producto = new Producto();
                 System.out.println("Registro número: "+i);
                 System.out.println("ID: "+jTable1.getValueAt(i, 0));
                 System.out.println("NOMBRE: "+jTable1.getValueAt(i, 1));
-                System.out.println("TELÉFONO: "+jTable1.getValueAt(i, 2));
-                venta.setID_PRODUCTO(jTable1.getValueAt(i, 0).toString());
-                venta.setCANTIDAD( Integer.parseInt(jTable1.getValueAt(i, 1).toString()));
-                venta.setPRECIO_FINAL(Integer.parseInt( jTable1.getValueAt(i, 2).toString()));
+                System.out.println("CANTIDAD: "+jTable1.getValueAt(i, 2));
+                System.out.println("TOTAL: "+jTable1.getValueAt(i, 3));
+                venta.setID_PRODUCTO(jTable1.getValueAt(i, 1).toString());
+                venta.setCANTIDAD( Integer.parseInt(jTable1.getValueAt(i, 2).toString()));
+                venta.setPRECIO_FINAL(Integer.parseInt( jTable1.getValueAt(i, 3).toString()));
                 dv.Registrar(venta);
+                int id = (int) jTable1.getValueAt(i, 0);
+                for(int j=0;j < lstP.size() ;j++){
+                    if(id == lstP.get(j).getDBID_Producto()){
+                        int Resta = lstP.get(j).getCantidad() - Integer.parseInt(jTable1.getValueAt(i, 2).toString()) ;
+                        if(Resta >= lstP.get(j).getCantidadMinima()){
+                            lstP.get(j).setCantidad( Resta);
+                            dp.Modificar(lstP.get(j));
+                        }else if(Resta  <= lstP.get(j).getCantidadMinima() && Resta >= 0 ){
+                            JOptionPane.showMessageDialog(null, "Se Necesita mas Stock Para el Producto: "+lstP.get(j).getNombre());
+                            lstP.get(j).setCantidad( Resta);
+                            dp.Modificar(lstP.get(j));
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(null, "Se Acabo el Stock Para el Producto: "+lstP.get(j).getNombre());
+                        }
+                    }
+                }
+                
+                
             }
         }catch(Exception e){
             System.out.println(e);
         }
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jButtonComprarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -308,12 +340,12 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton jButtonAdmin;
+    private javax.swing.JButton jButtonAgregar;
+    private javax.swing.JButton jButtonComprar;
+    private javax.swing.JButton jButtonHistorico;
+    private javax.swing.JComboBox<Producto> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

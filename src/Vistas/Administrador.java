@@ -33,13 +33,13 @@ public class Administrador extends javax.swing.JFrame {
             IDaoProductos DaoPro = new DaoProductoImpl();
             
             DefaultTableModel modelo = new DefaultTableModel();
-            modelo.setColumnIdentifiers(new Object[]{"Nombre","Tipo","Cantidad","Cantidad Minima","Precio Bruto","Precio Neto"});
+            modelo.setColumnIdentifiers(new Object[]{"ID","Nombre","Tipo","Cantidad","Cantidad Minima","Precio Bruto","Precio Neto"});
             List<Producto> lstpro = DaoPro.Listar();
             for(int i=0; i < lstpro.size(); i++){
                 Producto Pro = lstpro.get(i);
                 System.out.println(Pro);
                 int precio = 0;
-                modelo.addRow(new Object[]{Pro.getNombre(),Pro.getID_Tipo(),Pro.getCantidad(),Pro.getCantidadMinima(),Pro.getPrecioBruto(),Pro.getPrecioNeto()});
+                modelo.addRow(new Object[]{Pro.getDBID_Producto(),Pro.getNombre(),Pro.getID_Tipo(),Pro.getCantidad(),Pro.getCantidadMinima(),Pro.getPrecioBruto(),Pro.getPrecioNeto()});
 
             }
             jTable1.setModel(modelo);
@@ -94,6 +94,11 @@ public class Administrador extends javax.swing.JFrame {
         });
 
         jButton2.setText("Eliminar Producto");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Abastecer Producto");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -187,12 +192,13 @@ public class Administrador extends javax.swing.JFrame {
         
         Producto p = new Producto();
         int row = jTable1.getSelectedRow();
-        p.setNombre(String.valueOf(jTable1.getValueAt(row, 0)));
-        p.setID_Tipo(String.valueOf(jTable1.getValueAt(row, 1)));
-        p.setCantidad(Integer.parseInt(String.valueOf(jTable1.getValueAt(row, 2))));
-        p.setCantidadMinima(Integer.parseInt(String.valueOf(jTable1.getValueAt(row, 3))));
-        p.setPrecioBruto(Integer.parseInt(String.valueOf(jTable1.getValueAt(row, 4))));
-        p.setPrecioNeto(Integer.parseInt(String.valueOf(jTable1.getValueAt(row, 5))));
+        p.setDBID_Producto(Integer.parseInt(String.valueOf(jTable1.getValueAt(row, 0))));
+        p.setNombre(String.valueOf(jTable1.getValueAt(row, 1)));
+        p.setID_Tipo(String.valueOf(jTable1.getValueAt(row, 2)));
+        p.setCantidad(Integer.parseInt(String.valueOf(jTable1.getValueAt(row, 3))));
+        p.setCantidadMinima(Integer.parseInt(String.valueOf(jTable1.getValueAt(row, 4))));
+        p.setPrecioBruto(Integer.parseInt(String.valueOf(jTable1.getValueAt(row, 5))));
+        p.setPrecioNeto(Integer.parseInt(String.valueOf(jTable1.getValueAt(row, 6))));
             
         Abastecer ab = new Abastecer(p);
         this.hide();
@@ -201,6 +207,21 @@ public class Administrador extends javax.swing.JFrame {
             System.out.println(e);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try{
+            int row = jTable1.getSelectedRow();
+            IDaoProductos DP = new DaoProductoImpl();
+            Producto p = new Producto();
+            p.setDBID_Producto(Integer.parseInt(String.valueOf(jTable1.getValueAt(row, 0))));
+            DP.Eliminar(p);
+            CargaTabla();
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -93,6 +93,7 @@ public class Producto {
 
     @Override
     public String toString(){
-        return "Producto ID: "+this.DBID_Producto+", Nombre: "+this.Nombre+ ", Cantidad: "+this.Cantidad+", cantidad Mimina: "+this.CantidadMinima+", PrecioNeto"+this.PrecioNeto;
+        //return "Producto ID: "+this.DBID_Producto+", Nombre: "+this.Nombre+ ", Cantidad: "+this.Cantidad+", cantidad Mimina: "+this.CantidadMinima+", PrecioNeto"+this.PrecioNeto;
+        return this.Nombre;
     }
 }

@@ -10,5 +10,8 @@ package Interfaces;
  * @author juang
  */
 public interface ITipoProd {
-   
+   public void setNombre(String Nombre);
+   public String getNombre();
+   public void setIVA(int iva);
+   public int getIVA();
 }

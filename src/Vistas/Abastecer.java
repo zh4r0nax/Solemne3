@@ -23,7 +23,7 @@ public class Abastecer extends javax.swing.JFrame {
     private static Producto pro;
     public Abastecer(Producto pro) {
         this.pro = pro;
-        this.setLocationRelativeTo(this);
+        this.setLocationRelativeTo(null);
         initComponents();
     }
 
