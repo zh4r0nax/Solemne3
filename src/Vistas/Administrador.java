@@ -188,21 +188,19 @@ public class Administrador extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // Actualizar Producto
         try{
-            
-        
-        Producto p = new Producto();
-        int row = jTable1.getSelectedRow();
-        p.setDBID_Producto(Integer.parseInt(String.valueOf(jTable1.getValueAt(row, 0))));
-        p.setNombre(String.valueOf(jTable1.getValueAt(row, 1)));
-        p.setID_Tipo(String.valueOf(jTable1.getValueAt(row, 2)));
-        p.setCantidad(Integer.parseInt(String.valueOf(jTable1.getValueAt(row, 3))));
-        p.setCantidadMinima(Integer.parseInt(String.valueOf(jTable1.getValueAt(row, 4))));
-        p.setPrecioBruto(Integer.parseInt(String.valueOf(jTable1.getValueAt(row, 5))));
-        p.setPrecioNeto(Integer.parseInt(String.valueOf(jTable1.getValueAt(row, 6))));
-            
-        Abastecer ab = new Abastecer(p);
-        this.hide();
-        ab.show();
+            Producto p = new Producto();
+            int row = jTable1.getSelectedRow();
+            p.setDBID_Producto(Integer.parseInt(String.valueOf(jTable1.getValueAt(row, 0))));
+            p.setNombre(String.valueOf(jTable1.getValueAt(row, 1)));
+            p.setID_Tipo(String.valueOf(jTable1.getValueAt(row, 2)));
+            p.setCantidad(Integer.parseInt(String.valueOf(jTable1.getValueAt(row, 3))));
+            p.setCantidadMinima(Integer.parseInt(String.valueOf(jTable1.getValueAt(row, 4))));
+            p.setPrecioBruto(Integer.parseInt(String.valueOf(jTable1.getValueAt(row, 5))));
+            p.setPrecioNeto(Integer.parseInt(String.valueOf(jTable1.getValueAt(row, 6))));
+
+            Abastecer ab = new Abastecer(p);
+            this.hide();
+            ab.show();
         }catch(Exception e){
             System.out.println(e);
         }

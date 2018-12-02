@@ -111,7 +111,12 @@ public class Abastecer extends javax.swing.JFrame {
         
         IDaoProductos DP = new DaoProductoImpl();
         try {
-            pro.setCantidad(Integer.parseInt(jTextField1.getText()));
+            pro.setCantidad(
+                    Integer.parseInt(jTextField1.getText())
+                    +
+                    pro.getCantidad()
+            
+            );
             DP.Modificar(pro);
             Administrador a = new Administrador();
             this.hide(  );

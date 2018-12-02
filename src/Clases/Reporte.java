@@ -10,36 +10,42 @@ package Clases;
  * @author juang
  */
 public class Reporte {
-    private String MaxPro;
-    private String MinPro;
-    private String Prom;
+    private String Prod;
+    private int Cantidad;
+    private int Total;
 
     public Reporte() {
     }
 
-    public String getMaxPro() {
-        return MaxPro;
+    public String getProd() {
+        return Prod;
     }
 
-    public void setMaxPro(String MaxPro) {
-        this.MaxPro = MaxPro;
+    public void setProd(String Prod) {
+        this.Prod = Prod;
     }
 
-    public String getMinPro() {
-        return MinPro;
+    public int getCantidad() {
+        return Cantidad;
     }
 
-    public void setMinPro(String MinPro) {
-        this.MinPro = MinPro;
+    public void setCantidad(int Cantidad) {
+        this.Cantidad = Cantidad;
     }
 
-    public String getProm() {
-        return Prom;
+    public int getTotal() {
+        return Total;
     }
 
-    public void setProm(String Prom) {
-        this.Prom = Prom;
+    public void setTotal(int Total) {
+        this.Total = Total;
     }
+
+    @Override
+    public String toString() {
+        return "Reporte{" + "Prod=" + Prod + ", Cantidad=" + Cantidad + ", Total=" + Total + '}';
+    }
+
     
     
 }

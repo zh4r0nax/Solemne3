@@ -62,14 +62,14 @@ public class DaoProductoImpl extends Conexion implements IDaoProductos {
                     + "CANTIDAD_MINIMA= ?, "
                     + "PRECIO_BRUTO = ?,"
                     + "PRECIO_NETO = ? "
-                    + "WHERE NOMBRE = ?");
+                    + "WHERE DBID_PRODUCTO = ?");
             st.setString(1, Producto.getNombre());
             st.setString(2, Producto.getID_Tipo());
             st.setInt(3, Producto.getCantidad());
             st.setInt(4, Producto.getCantidadMinima());
             st.setInt(5, Producto.getPrecioBruto());
             st.setInt(6, Producto.getPrecioNeto());
-            st.setString(7, Producto.getNombre());
+            st.setInt(7, Producto.getDBID_Producto());
             
             st.execute();
             

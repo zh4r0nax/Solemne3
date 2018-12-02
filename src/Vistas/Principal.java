@@ -292,8 +292,12 @@ public class Principal extends javax.swing.JFrame {
                             dp.Modificar(lstP.get(j));
                         }
                         else{
-                            JOptionPane.showMessageDialog(null, "Se Acabo el Stock Para el Producto: "+lstP.get(j).getNombre());
+                            JOptionPane.showMessageDialog(null, "Se Acabo el Stock Para el Producto: "+lstP.get(j).getNombre()+
+                                    "Se vendieron: "+lstP.get(j).getCantidad());
+                            lstP.get(j).setCantidad(0);
+                            dp.Modificar(lstP.get(j));
                         }
+                        ((DefaultTableModel)jTable1.getModel()).removeRow(i);
                     }
                 }
                 
