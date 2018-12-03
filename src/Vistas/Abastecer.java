@@ -8,8 +8,6 @@ package Vistas;
 import Clases.Producto;
 import Interfaces.Dao.IDaoProductos;
 import dao.DaoProductoImpl;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -23,7 +21,7 @@ public class Abastecer extends javax.swing.JFrame {
     private static Producto pro;
     public Abastecer(Producto pro) {
         this.pro = pro;
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(this);
         initComponents();
     }
 
