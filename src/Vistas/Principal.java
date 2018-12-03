@@ -63,6 +63,8 @@ public class Principal extends javax.swing.JFrame {
                 
             //}
             jTable1.setModel(modelo);
+        }catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(null,"Por favor Ingresa Numeros NO :"+jTextField1.getText());
         }
         catch(Exception e){
             System.out.println(e);

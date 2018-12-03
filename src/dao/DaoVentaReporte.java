@@ -29,7 +29,7 @@ public class DaoVentaReporte extends Conexion implements IDaoReporte {
                 " ,sum(venta.PRECIO_FINAL) as 'Total'\n"+
                 " from\n" +
                 " venta\n" +
-                " group by venta.ID_PRODUCTO");
+                " group by venta.ID_PRODUCTO order by sum(venta.CANTIDAD) desc");
             
             lista = new ArrayList();
             ResultSet rs = st.executeQuery();
