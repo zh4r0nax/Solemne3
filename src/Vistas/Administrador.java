@@ -20,6 +20,8 @@ public class Administrador extends javax.swing.JFrame {
     /**
      * Creates new form Administrador
      */
+    List<Producto> lstpro;
+            
     public Administrador() {
         initComponents();
         this.setLocationRelativeTo(this);
@@ -34,7 +36,7 @@ public class Administrador extends javax.swing.JFrame {
             
             DefaultTableModel modelo = new DefaultTableModel();
             modelo.setColumnIdentifiers(new Object[]{"ID","Nombre","Tipo","Cantidad","Cantidad Minima","Precio Bruto","Precio Neto"});
-            List<Producto> lstpro = DaoPro.Listar();
+            this.lstpro = DaoPro.Listar();
             for(int i=0; i < lstpro.size(); i++){
                 Producto Pro = lstpro.get(i);
                 System.out.println(Pro);
@@ -180,7 +182,7 @@ public class Administrador extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        MantProd mp = new MantProd();
+        MantProd mp = new MantProd(this.lstpro);
         this.hide();
         mp.show();
     }//GEN-LAST:event_jButton1ActionPerformed

@@ -11,7 +11,9 @@ import Interfaces.Dao.IDaoProductos;
 import Interfaces.Dao.IDaoTipo_Producto;
 import dao.DaoProductoImpl;
 import dao.DaoTipoProductoImpl;
+import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,9 +24,12 @@ public class MantProd extends javax.swing.JFrame {
     /**
      * Creates new form MantProd
      */
-    public MantProd() {
+    private List<Producto> lstpro;
+    
+    public MantProd(List<Producto> lstpro) {
         initComponents();
         this.setLocationRelativeTo(this);        
+        this.lstpro = lstpro;
         CargarTipos();
     }
 
@@ -184,6 +189,7 @@ public class MantProd extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // Agregar Producto
         try{
+            boolean existente = true;
             IDaoProductos DP = new DaoProductoImpl();
             Producto p = new Producto();
             p.setNombre(jTextField1.getText());
@@ -201,7 +207,23 @@ public class MantProd extends javax.swing.JFrame {
             System.out.println(TP.getIVA());
             System.out.println(100 + TP.getIVA());
             System.out.println(Porcentaje);
-            DP.Registrar(p);
+            
+            
+            //validar existencia de nombre de producto
+            ArrayList<String> newp =  new ArrayList<String>();
+            for(int i = 0; i< lstpro.size();i++){
+                newp.add(lstpro.get(i).getNombre());
+            }
+            existente = newp.contains(p.getNombre());
+            
+            if (!existente){
+                DP.Registrar(p);   
+                Administrador ad = new Administrador();
+                ad.show();
+                this.hide();
+            }else{
+                    JOptionPane.showMessageDialog(null, "Ya existe un producto con este nombre");
+                }
         }catch(Exception e){
             System.out.println(e);
         }
@@ -237,8 +259,9 @@ public class MantProd extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            private List<Producto> lstpro;
             public void run() {
-                new MantProd().setVisible(true);
+                new MantProd(this.lstpro).setVisible(true);
             }
         });
     }
