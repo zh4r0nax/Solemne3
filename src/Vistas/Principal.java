@@ -41,17 +41,9 @@ public class Principal extends javax.swing.JFrame {
     
     private void CargaTabla(){
          try{
-
-            //IDaoVenta DaoVent = new DaoVentaImpl();
-            
-             //List<Venta> lstvent = DaoVent.Listar();
-            //for(int i=0; i <= lstvent.size(); i++){
-            //    Venta vent = lstvent.get(i);
-            //    System.out.println(vent);
-            
+             
             Producto p = new Producto();
             p = (Producto) jComboBox1.getSelectedItem();
-            
             int precio = Integer.parseInt(jTextField1.getText()) * p.getPrecioNeto();
             
             modelo.addRow(new Object[]{
@@ -60,8 +52,7 @@ public class Principal extends javax.swing.JFrame {
                 ,jTextField1.getText()
                 ,precio
             });
-                
-            //}
+
             jTable1.setModel(modelo);
         }catch(NumberFormatException ex){
             JOptionPane.showMessageDialog(null,"Por favor Ingresa Numeros NO :"+jTextField1.getText());
@@ -250,9 +241,6 @@ public class Principal extends javax.swing.JFrame {
     private void jButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarActionPerformed
         // Agregar datos a ventas
         try{
-            
-            
-            
             CargaTabla();
         }catch(Exception e){
             System.out.println(e);
