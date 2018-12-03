@@ -287,7 +287,7 @@ public class Principal extends javax.swing.JFrame {
                             lstP.get(j).setCantidad(0);
                             dp.Modificar(lstP.get(j));
                         }
-                        ((DefaultTableModel)jTable1.getModel()).removeRow(i);
+                        //((DefaultTableModel)jTable1.getModel()).removeRow(i);
                     }
                 }
                 
